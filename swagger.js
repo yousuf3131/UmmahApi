@@ -355,9 +355,9 @@ Please use responsibly, cache results when possible, and make dua for the develo
               required: false,
               schema: {
                 type: 'string',
-                enum: ['MuslimWorldLeague', 'Egyptian', 'Karachi', 'UmmAlQura', 'Dubai', 'MoonsightingCommittee', 'NorthAmerica', 'ISNA', 'Kuwait', 'Qatar', 'Singapore'],
+                enum: ['MuslimWorldLeague', 'Egyptian', 'Karachi', 'UmmAlQura', 'Dubai', 'MoonsightingCommittee', 'NorthAmerica', 'ISNA', 'Kuwait', 'Qatar', 'Singapore', 'Hanafi', 'Shafi', 'Maliki', 'Hanbali'],
               },
-              description: 'Calculation method (defaults to MuslimWorldLeague)',
+              description: 'Calculation method (defaults to MuslimWorldLeague). Use Hanafi/Shafi/Maliki/Hanbali for madhab-specific Asr calculations.',
               example: 'MuslimWorldLeague',
             },
             {
@@ -370,6 +370,17 @@ Please use responsibly, cache results when possible, and make dua for the develo
               },
               description: 'Numeral system: "english" for 0-9 or "arabic" for ٠-٩ (defaults to english)',
               example: 'english',
+            },
+            {
+              name: 'madhab',
+              in: 'query',
+              required: false,
+              schema: {
+                type: 'string',
+                enum: ['Hanafi', 'Shafi', 'Maliki', 'Hanbali'],
+              },
+              description: 'Islamic jurisprudence school for Asr calculation: Hanafi (later Asr) or Shafi/Maliki/Hanbali (earlier Asr) - defaults to Shafi',
+              example: 'Shafi',
             },
           ],
           responses: {

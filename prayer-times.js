@@ -5,7 +5,7 @@
  * for any location on Earth using accurate astronomical calculations.
  */
 
-const { Coordinates, CalculationMethod, Prayer, PrayerTimes } = require('adhan');
+const { Coordinates, CalculationMethod, Prayer, PrayerTimes, Madhab } = require('adhan');
 const moment = require('moment');
 
 /**
@@ -25,9 +25,10 @@ function convertToArabicNumerals(str) {
  * @param {string} date - Date in YYYY-MM-DD format (optional, defaults to today)
  * @param {string} method - Calculation method (optional, defaults to 'MuslimWorldLeague')
  * @param {string} numerals - Numeral system: 'english' or 'arabic' (optional, defaults to 'english')
+ * @param {string} madhab - Islamic jurisprudence school: 'Hanafi' or 'Shafi' (optional, defaults to 'Shafi')
  * @returns {Object} Prayer times with additional information
  */
-function calculatePrayerTimes(latitude, longitude, date = null, method = 'MuslimWorldLeague', numerals = 'english') {
+function calculatePrayerTimes(latitude, longitude, date = null, method = 'MuslimWorldLeague', numerals = 'english', madhab = 'Shafi') {
     try {
         // Set up coordinates
         const coordinates = new Coordinates(latitude, longitude);
@@ -35,7 +36,7 @@ function calculatePrayerTimes(latitude, longitude, date = null, method = 'Muslim
         // Parse date or use current date
         const prayerDate = date ? moment(date).toDate() : new Date();
         
-        // Select calculation method
+        // Select geographic calculation method
         const calculationMethods = {
             'MuslimWorldLeague': CalculationMethod.MuslimWorldLeague(),
             'Egyptian': CalculationMethod.Egyptian(),
@@ -47,10 +48,31 @@ function calculatePrayerTimes(latitude, longitude, date = null, method = 'Muslim
             'ISNA': CalculationMethod.NorthAmerica(), // Islamic Society of North America (alias for NorthAmerica)
             'Kuwait': CalculationMethod.Kuwait(),
             'Qatar': CalculationMethod.Qatar(),
-            'Singapore': CalculationMethod.Singapore()
+            'Singapore': CalculationMethod.Singapore(),
+            
+            // Legacy madhab methods (for backward compatibility)
+            'Hanafi': CalculationMethod.MuslimWorldLeague(),
+            'Shafi': CalculationMethod.MuslimWorldLeague(),
+            'Maliki': CalculationMethod.MuslimWorldLeague(),
+            'Hanbali': CalculationMethod.MuslimWorldLeague()
         };
         
-        const params = calculationMethods[method] || calculationMethods.MuslimWorldLeague;
+        let params = calculationMethods[method] || calculationMethods.MuslimWorldLeague;
+        
+        // Set madhab for Asr calculation
+        // If method is a madhab name, use that madhab
+        // Otherwise, use the madhab parameter
+        let selectedMadhab = madhab;
+        if (['Hanafi', 'Shafi', 'Maliki', 'Hanbali'].includes(method)) {
+            selectedMadhab = method;
+        }
+        
+        // Apply madhab to Asr calculation
+        if (selectedMadhab === 'Hanafi') {
+            params.madhab = Madhab.Hanafi;
+        } else {
+            params.madhab = Madhab.Shafi; // Shafi, Maliki, and Hanbali use the same Asr calculation
+        }
         
         // Calculate prayer times
         const prayerTimes = new PrayerTimes(coordinates, prayerDate, params);
@@ -193,6 +215,40 @@ function getCalculationMethods() {
             description: 'Used in Singapore and Malaysia',
             fajr_angle: '20°',
             isha_angle: '18°'
+        },
+        
+        // Madhab-specific calculation methods (primarily affects Asr timing)
+        'Hanafi': {
+            name: 'Hanafi Madhab',
+            description: 'Hanafi school calculation - Asr when shadow = 2x object length',
+            fajr_angle: '18°',
+            isha_angle: '17°',
+            asr_calculation: 'Shadow length = 2x object length',
+            madhab: 'Hanafi'
+        },
+        'Shafi': {
+            name: 'Shafi Madhab',
+            description: 'Shafi school calculation - Asr when shadow = 1x object length',
+            fajr_angle: '18°',
+            isha_angle: '17°',
+            asr_calculation: 'Shadow length = 1x object length',
+            madhab: 'Shafi/Maliki/Hanbali'
+        },
+        'Maliki': {
+            name: 'Maliki Madhab',
+            description: 'Maliki school calculation - Asr when shadow = 1x object length',
+            fajr_angle: '18°',
+            isha_angle: '17°',
+            asr_calculation: 'Shadow length = 1x object length',
+            madhab: 'Shafi/Maliki/Hanbali'
+        },
+        'Hanbali': {
+            name: 'Hanbali Madhab',
+            description: 'Hanbali school calculation - Asr when shadow = 1x object length',
+            fajr_angle: '18°',
+            isha_angle: '17°',
+            asr_calculation: 'Shadow length = 1x object length',
+            madhab: 'Shafi/Maliki/Hanbali'
         }
     };
 }
@@ -204,9 +260,10 @@ function getCalculationMethods() {
  * @param {string} date - Date string
  * @param {string} method - Calculation method
  * @param {string} numerals - Numeral system
+ * @param {string} madhab - Islamic jurisprudence school
  * @returns {Object} Validation result
  */
-function validatePrayerTimesRequest(lat, lng, date, method, numerals) {
+function validatePrayerTimesRequest(lat, lng, date, method, numerals, madhab) {
     // Validate coordinates (reuse from qibla.js)
     if (typeof lat !== 'number' || typeof lng !== 'number') {
         return {
@@ -258,6 +315,14 @@ function validatePrayerTimesRequest(lat, lng, date, method, numerals) {
         return {
             isValid: false,
             error: 'Invalid numeral system. Use "english" for 0-9 or "arabic" for ٠-٩'
+        };
+    }
+    
+    // Validate madhab if provided
+    if (madhab && !['Hanafi', 'Shafi', 'Maliki', 'Hanbali'].includes(madhab)) {
+        return {
+            isValid: false,
+            error: 'Invalid madhab. Available options: Hanafi, Shafi, Maliki, Hanbali'
         };
     }
     
