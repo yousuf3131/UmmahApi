@@ -185,7 +185,7 @@ const swaggerOptions = {
         .swagger-ui .btn.authorize { background-color: #4a7c59; border-color: #4a7c59; }
         .swagger-ui .btn.execute { background-color: #4a7c59; border-color: #4a7c59; }
     `,
-    customSiteTitle: 'Islamic Services API Documentation',
+    customSiteTitle: 'UmmahApi Documentation',
     customfavIcon: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0iIzRhN2M1OSIvPjx0ZXh0IHg9IjUwIiB5PSI2MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtZmFtaWx5PSJBcmlhbCI+QVBJPC90ZXh0Pjwvc3ZnPg==',
     swaggerOptions: {
         persistAuthorization: false,
@@ -214,7 +214,7 @@ app.get('/api/swagger.json', (req, res) => {
 // Root endpoint
 app.get('/', (req, res) => {
     res.json({
-        message: 'Islamic Services API',
+        message: 'UmmahApi',
         description: 'Comprehensive free Islamic services for the global Muslim ummah',
         sadaqah_jariah: 'May Allah accept this service for the benefit of the ummah',
         services: {
@@ -784,9 +784,9 @@ app.get('/api/asma-ul-husna/daily/:day', (req, res) => {
 // Legacy JSON documentation endpoint (redirects to Swagger)
 app.get('/api/docs/json', (req, res) => {
     res.json({
-        title: 'Islamic Services API Documentation',
+        title: 'UmmahApi Documentation',
         version: '2.0.0',
-        description: 'Comprehensive free Islamic services API for the global Muslim ummah',
+        description: 'Comprehensive free UmmahApi for the global Muslim ummah',
         interactive_docs: `${req.protocol}://${req.get('host')}/api/docs`,
         swagger_json: `${req.protocol}://${req.get('host')}/api/swagger.json`,
         message: 'For interactive documentation, visit /api/docs',
@@ -826,7 +826,7 @@ module.exports = app;
 // Only start a listener in local/dev (not on Vercel)
 if (!process.env.VERCEL) {
   app.listen(PORT, () => {
-    console.log(`\n🕋 Islamic Services API Server running on http://localhost:${PORT}`);
+    console.log(`\n🕋 UmmahApi Server running on http://localhost:${PORT}`);
     console.log(`📍 API Base URL: http://localhost:${PORT}/api`);
     console.log(`📚 Interactive Docs (Swagger): http://localhost:${PORT}/api/docs`);
     console.log(`🩺 Health Check: http://localhost:${PORT}/api/health`);

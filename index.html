@@ -3,9 +3,117 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>UmmahAPI – Free Islamic Services API</title>
-  <meta name="description" content="Qibla, Prayer Times, Hijri Calendar, Asma ul Husna and more – free, fast, and simple REST APIs." />
+  <title>UmmahAPI – Free Islamic Services API | Qibla, Prayer Times, Hijri Calendar</title>
+  <meta name="description" content="Free Islamic REST API for developers. Get accurate Qibla direction, prayer times with madhab support, Hijri calendar, and 99 Names of Allah. Fast, reliable, and completely free." />
+  
+  <!-- SEO Meta Tags -->
+  <meta name="keywords" content="Islamic API, Qibla API, Prayer Times API, Hijri Calendar API, Islamic Calendar, Muslim Prayer Times, Asma ul Husna, 99 Names of Allah, Islamic Developer Tools, Muslim API, Free Islamic API, REST API Islam" />
+  <meta name="author" content="UmmahAPI" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="distribution" content="global" />
+  <meta name="rating" content="general" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ummahapi.com/" />
+  <meta property="og:title" content="UmmahAPI – Free Islamic Services API" />
+  <meta property="og:description" content="Free Islamic REST API for developers. Get accurate Qibla direction, prayer times with madhab support, Hijri calendar, and 99 Names of Allah." />
+  <meta property="og:image" content="https://ummahapi.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="UmmahAPI" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://ummahapi.com/" />
+  <meta property="twitter:title" content="UmmahAPI – Free Islamic Services API" />
+  <meta property="twitter:description" content="Free Islamic REST API for developers. Get accurate Qibla direction, prayer times with madhab support, Hijri calendar, and 99 Names of Allah." />
+  <meta property="twitter:image" content="https://ummahapi.com/og-image.jpg" />
+  <meta property="twitter:creator" content="@ummahapi" />
+  
+  <!-- Additional SEO -->
+  <link rel="canonical" href="https://ummahapi.com/" />
+  <meta name="theme-color" content="#A92846" />
+  <meta name="msapplication-TileColor" content="#A92846" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  
+  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><circle cx='128' cy='128' r='120' fill='%23A92846'/><path d='M128 56l44 28v88h-88V84l44-28z' fill='%23fff'/></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><circle cx='128' cy='128' r='120' fill='%23A92846'/><path d='M128 56l44 28v88h-88V84l44-28z' fill='%23fff'/></svg>">
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ummahapi.com/#organization",
+        "name": "UmmahAPI",
+        "url": "https://ummahapi.com/",
+        "sameAs": [
+          "https://github.com/yousuf3131/IslamicApi"
+        ],
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ummahapi.com/logo.png"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ummahapi.com/#website",
+        "url": "https://ummahapi.com/",
+        "name": "UmmahAPI - Free Islamic Services API",
+        "description": "Free Islamic REST API for developers. Get accurate Qibla direction, prayer times with madhab support, Hijri calendar, and 99 Names of Allah.",
+        "publisher": {
+          "@id": "https://ummahapi.com/#organization"
+        },
+        "potentialAction": [
+          {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://ummahapi.com/api/docs"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "UmmahAPI",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "description": "Free Islamic REST API providing Qibla direction, prayer times, Hijri calendar, and 99 Names of Allah",
+        "url": "https://ummahapi.com/",
+        "downloadUrl": "https://ummahapi.com/api/docs",
+        "softwareVersion": "1.0",
+        "author": {
+          "@id": "https://ummahapi.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+          "Qibla Direction API",
+          "Prayer Times API with Madhab Support",
+          "Hijri Calendar API",
+          "99 Names of Allah API",
+          "Free REST API",
+          "Global Coverage",
+          "Rate Limited for Fair Use"
+        ]
+      }
+    ]
+  }
+  </script>
   <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -67,11 +175,11 @@
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-4 py-10">
-    <section class="mb-10">
+  <main class="max-w-5xl mx-auto px-4 py-10" role="main">
+    <section class="mb-10" itemscope itemtype="https://schema.org/SoftwareApplication">
       <div class="rounded-2xl bg-gradient-to-br from-gray-700 via-gray-800 to-red-900 text-white p-8 shadow-2xl border border-red-900/30">
-        <h2 class="text-3xl md:text-4xl font-black text-white">Free Islamic Services API</h2>
-        <p class="mt-3 max-w-2xl text-gray-200">
+        <h1 class="text-3xl md:text-4xl font-black text-white" itemprop="name">Free UmmahAPI</h1>
+        <p class="mt-3 max-w-2xl text-gray-200" itemprop="description">
           Qibla direction, prayer times, Hijri calendar, Asma&nbsp;ul&nbsp;Husna and more — fast JSON endpoints with global coverage.
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
@@ -84,51 +192,51 @@
       </div>
     </section>
 
-    <section id="endpoints" class="mb-12">
-      <h3 class="text-2xl font-bold mb-4 text-white">Endpoints</h3>
+    <section id="endpoints" class="mb-12" itemscope itemtype="https://schema.org/ItemList">
+      <h2 class="text-2xl font-bold mb-4 text-white" itemprop="name">API Endpoints</h2>
       <div class="grid md:grid-cols-2 gap-5">
-        <div class="rounded-xl border border-red-800/40 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-700/60 transition-colors">
-          <h4 class="font-semibold text-white flex items-center">
-            <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>Qibla
-          </h4>
-          <p class="text-sm text-gray-300">Find prayer direction to Makkah from any coordinates.</p>
+        <article class="rounded-xl border border-red-800/40 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-700/60 transition-colors" itemscope itemtype="https://schema.org/APIReference">
+          <h3 class="font-semibold text-white flex items-center" itemprop="name">
+            <span class="w-2 h-2 bg-red-500 rounded-full mr-2" aria-hidden="true"></span>Qibla Direction API
+          </h3>
+          <p class="text-sm text-gray-300" itemprop="description">Find accurate prayer direction to Makkah from any coordinates worldwide.</p>
           <code class="block mt-3 text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700">GET /api/qibla?lat=<span class="opacity-70">{lat}</span>&amp;lng=<span class="opacity-70">{lng}</span></code>
-          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/qibla?lat=41.8781&lng=-87.6298">Try (Chicago)</a>
-        </div>
+          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/qibla?lat=41.8781&lng=-87.6298" itemprop="url" aria-label="Try Qibla API with Chicago coordinates">Try (Chicago)</a>
+        </article>
 
-        <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-800/40 transition-colors">
-          <h4 class="font-semibold text-white flex items-center">
-            <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>Prayer Times
-          </h4>
-          <p class="text-sm text-gray-300">Accurate Fajr–Isha times with madhab support (Hanafi/Shafi/Maliki/Hanbali).</p>
+        <article class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-800/40 transition-colors" itemscope itemtype="https://schema.org/APIReference">
+          <h3 class="font-semibold text-white flex items-center" itemprop="name">
+            <span class="w-2 h-2 bg-red-500 rounded-full mr-2" aria-hidden="true"></span>Prayer Times API
+          </h3>
+          <p class="text-sm text-gray-300" itemprop="description">Accurate Fajr–Isha prayer times with madhab support (Hanafi/Shafi/Maliki/Hanbali).</p>
           <code class="block mt-3 text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700">
             GET /api/prayer-times?lat={lat}&amp;lng={lng}&amp;madhab=Hanafi&amp;method=MuslimWorldLeague
           </code>
-          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/prayer-times?lat=40.7128&lng=-74.006&madhab=Hanafi&method=MuslimWorldLeague">Try (NYC - Hanafi)</a>
-        </div>
+          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/prayer-times?lat=40.7128&lng=-74.006&madhab=Hanafi&method=MuslimWorldLeague" itemprop="url" aria-label="Try Prayer Times API with New York coordinates and Hanafi madhab">Try (NYC - Hanafi)</a>
+        </article>
 
-        <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-800/40 transition-colors">
-          <h4 class="font-semibold text-white flex items-center">
-            <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>Hijri Date
-          </h4>
-          <p class="text-sm text-gray-300">Gregorian → Hijri conversion and Islamic events.</p>
+        <article class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-800/40 transition-colors" itemscope itemtype="https://schema.org/APIReference">
+          <h3 class="font-semibold text-white flex items-center" itemprop="name">
+            <span class="w-2 h-2 bg-red-500 rounded-full mr-2" aria-hidden="true"></span>Hijri Calendar API
+          </h3>
+          <p class="text-sm text-gray-300" itemprop="description">Gregorian to Hijri date conversion and Islamic calendar events.</p>
           <code class="block mt-3 text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700">GET /api/hijri-date?date=YYYY-MM-DD</code>
-          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/hijri-date?date=2025-09-19">Try</a>
-        </div>
+          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/hijri-date?date=2025-09-19" itemprop="url" aria-label="Try Hijri Calendar API with current date">Try Today's Date</a>
+        </article>
 
-        <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-800/40 transition-colors">
-          <h4 class="font-semibold text-white flex items-center">
-            <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>Asma ul Husna
-          </h4>
-          <p class="text-sm text-gray-300">99 Names of Allah with meanings.</p>
+        <article class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-800/40 transition-colors" itemscope itemtype="https://schema.org/APIReference">
+          <h3 class="font-semibold text-white flex items-center" itemprop="name">
+            <span class="w-2 h-2 bg-red-500 rounded-full mr-2" aria-hidden="true"></span>99 Names of Allah API
+          </h3>
+          <p class="text-sm text-gray-300" itemprop="description">Asma ul Husna - The 99 Beautiful Names of Allah with meanings and transliterations.</p>
           <code class="block mt-3 text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700">GET /api/asma-ul-husna</code>
-          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/asma-ul-husna">Try</a>
-        </div>
+          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/asma-ul-husna" itemprop="url" aria-label="Try 99 Names of Allah API">Try API</a>
+        </article>
       </div>
     </section>
 
     <section id="examples" class="mb-12">
-      <h3 class="text-2xl font-bold mb-4 text-white">Quick Examples</h3>
+      <h2 class="text-2xl font-bold mb-4 text-white">Quick Examples</h2>
       <div class="space-y-4">
         <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg">
           <p class="font-mono text-sm text-gray-200">curl "https://ummahapi.com/api/qibla?lat=41.8781&amp;lng=-87.6298"</p>
@@ -142,7 +250,7 @@
     </section>
 
     <section class="mb-12">
-      <h3 class="text-2xl font-bold mb-3 text-white">Limits & Fair Use</h3>
+      <h2 class="text-2xl font-bold mb-3 text-white">Rate Limits & Fair Use</h2>
       <ul class="list-disc pl-6 text-sm text-gray-300 space-y-1">
         <li>General: 200 requests / 15 minutes</li>
         <li>Calculations: 30 calculations / minute</li>
@@ -151,7 +259,7 @@
     </section>
 
     <section class="mb-16">
-      <h3 class="text-2xl font-bold mb-3 text-white">SDKs & Source</h3>
+      <h2 class="text-2xl font-bold mb-3 text-white">Open Source & Community</h2>
       <p class="text-sm text-gray-300">
         Open source on GitHub: <a class="text-red-400 hover:text-red-300 hover:underline transition-colors" href="https://github.com/yourusername/islamic-api">COMING SOON</a>.
         Contributions and PRs are welcome.
