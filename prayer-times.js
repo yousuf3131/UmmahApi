@@ -57,7 +57,7 @@ function calculatePrayerTimes(latitude, longitude, date = null, method = 'Muslim
             'Hanbali': CalculationMethod.MuslimWorldLeague()
         };
         
-        let params = calculationMethods[method] || calculationMethods.MuslimWorldLeague;
+        let baseParams = calculationMethods[method] || calculationMethods.MuslimWorldLeague;
         
         // Set madhab for Asr calculation
         // If method is a madhab name, use that madhab
@@ -67,11 +67,16 @@ function calculatePrayerTimes(latitude, longitude, date = null, method = 'Muslim
             selectedMadhab = method;
         }
         
-        // Apply madhab to Asr calculation
+        console.log(`[DEBUG] Method: ${method}, Selected Madhab: ${selectedMadhab}, Original madhab param: ${madhab}`);
+        
+        // Apply madhab directly to the calculation parameters
+        let params = baseParams;
         if (selectedMadhab === 'Hanafi') {
             params.madhab = Madhab.Hanafi;
+            console.log('[DEBUG] Applied Hanafi madhab for late Asr');
         } else {
-            params.madhab = Madhab.Shafi; // Shafi, Maliki, and Hanbali use the same Asr calculation
+            params.madhab = Madhab.Shafi;
+            console.log('[DEBUG] Applied Shafi madhab for early Asr');
         }
         
         // Calculate prayer times
@@ -104,6 +109,7 @@ function calculatePrayerTimes(latitude, longitude, date = null, method = 'Muslim
                 longitude: longitude
             },
             calculation_method: method,
+            madhab: selectedMadhab,
             numeral_system: numerals,
             prayer_times: {
                 fajr: formatTime(prayerTimes.fajr),
