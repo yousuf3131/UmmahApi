@@ -49,26 +49,31 @@ app.use(cors({
 
 // Enhanced Rate limiting to prevent abuse
 // General API rate limit - generous for normal use, strict for abuse
+// Helper: skip docs & health (incl. all /api/docs assets)
+const shouldSkip = (req) => {
+  const u = req.originalUrl || req.url || '';
+  return (
+    u === '/api/health' ||
+    u === '/api/swagger.json' ||
+    u === '/api/docs' ||
+    u.startsWith('/api/docs/')
+  );
+};
+
+// General API rate limit
 const generalLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 200, // 200 requests per 15 minutes (generous for legitimate use)
-    message: {
-        success: false,
-        error: 'Rate limit exceeded',
-        message: 'Too many requests from this IP, please try again later',
-        retry_after: '15 minutes',
-        limit_info: {
-            max_requests: 200,
-            window_minutes: 15,
-            note: 'This API is free for everyone. Rate limits help ensure fair usage.'
-        }
-    },
-    standardHeaders: true,
-    legacyHeaders: false,
-    // Skip rate limiting for health check and docs
-    skip: (req) => {
-        return req.path === '/api/health' || req.path === '/api/docs';
-    }
+  windowMs: 15 * 60 * 1000,
+  max: 200,
+  message: {
+    success: false,
+    error: 'Rate limit exceeded',
+    message: 'Too many requests from this IP, please try again later',
+    retry_after: '15 minutes',
+    limit_info: { max_requests: 200, window_minutes: 15, note: 'This API is free for everyone. Rate limits help ensure fair usage.' }
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+  skip: shouldSkip,   // ← important
 });
 
 // Stricter rate limit specifically for calculations (Qibla, Prayer times)
@@ -92,21 +97,19 @@ const calculationLimiter = rateLimit({
 
 // Very strict rate limit for potential abuse patterns
 const strictLimiter = rateLimit({
-    windowMs: 60 * 60 * 1000, // 1 hour
-    max: 1000, // 1000 requests per hour (catches serious abuse)
-    message: {
-        success: false,
-        error: 'Hourly rate limit exceeded',
-        message: 'Your IP has exceeded the hourly rate limit. This suggests automated usage.',
-        retry_after: '1 hour',
-        contact: 'If you need higher limits for legitimate use, please contact the API maintainers',
-        limit_info: {
-            max_requests: 1000,
-            window_minutes: 60
-        }
-    },
-    standardHeaders: true,
-    legacyHeaders: false
+  windowMs: 60 * 60 * 1000,
+  max: 1000,
+  message: {
+    success: false,
+    error: 'Hourly rate limit exceeded',
+    message: 'Your IP has exceeded the hourly rate limit. This suggests automated usage.',
+    retry_after: '1 hour',
+    contact: 'If you need higher limits for legitimate use, please contact the API maintainers',
+    limit_info: { max_requests: 1000, window_minutes: 60 }
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+  skip: shouldSkip,   // ← important
 });
 
 // Abuse detection middleware
