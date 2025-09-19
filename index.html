@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UmmahAPI – Free Islamic Services API</title>
+  <meta name="description" content="Qibla, Prayer Times, Hijri Calendar, Asma ul Husna and more – free, fast, and simple REST APIs." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><circle cx='128' cy='128' r='120' fill='%23A92846'/><path d='M128 56l44 28v88h-88V84l44-28z' fill='%23fff'/></svg>">
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1f2937 0%, #374151 25%, #4b5563 50%, #6b7280 75%, #9ca3af 100%);
+      background-attachment: fixed;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%);
+      background-size: 60px 60px, 40px 40px, 20px 20px, 20px 20px;
+      background-position: 0 0, 20px 20px, 0 0, 10px 10px;
+      pointer-events: none;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="text-gray-100">
+  <header class="bg-gray-800/90 backdrop-blur-sm border-b border-red-900/40">
+    <div class="max-w-5xl mx-auto px-4 py-6 flex items-center justify-between">
+      <h1 class="text-xl font-extrabold tracking-tight text-white">
+        <span class="text-red-400">Ummah</span><span class="text-white">API</span>
+      </h1>
+      <nav class="space-x-4 text-sm">
+        <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors" href="#endpoints">Endpoints</a>
+        <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors" href="#examples">Examples</a>
+        <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors" href="/api/docs">Swagger</a>
+        <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors" href="https://github.com/yourusername/islamic-api">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    <section class="mb-10">
+      <div class="rounded-2xl bg-gradient-to-br from-gray-700 via-gray-800 to-red-900 text-white p-8 shadow-2xl border border-red-900/30">
+        <h2 class="text-3xl md:text-4xl font-black text-white">Free Islamic Services API</h2>
+        <p class="mt-3 max-w-2xl text-gray-200">
+          Qibla direction, prayer times, Hijri calendar, Asma&nbsp;ul&nbsp;Husna and more — fast JSON endpoints with global coverage.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/api/docs" class="px-4 py-2 rounded-lg bg-red-800 hover:bg-red-700 text-white font-semibold transition-colors shadow-lg">Open Swagger</a>
+          <a href="/api/health" class="px-4 py-2 rounded-lg border border-red-700/60 hover:border-red-600 font-semibold transition-colors">Health Check</a>
+        </div>
+        <p class="mt-6 text-sm text-red-200">
+          Sadaqah Jariah — May Allah accept this service for the ummah.
+        </p>
+      </div>
+    </section>
+
+    <section id="endpoints" class="mb-12">
+      <h3 class="text-2xl font-bold mb-4 text-white">Endpoints</h3>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="rounded-xl border border-red-800/40 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-700/60 transition-colors">
+          <h4 class="font-semibold text-white flex items-center">
+            <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>Qibla
+          </h4>
+          <p class="text-sm text-gray-300">Find prayer direction to Makkah from any coordinates.</p>
+          <code class="block mt-3 text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700">GET /api/qibla?lat=<span class="opacity-70">{lat}</span>&amp;lng=<span class="opacity-70">{lng}</span></code>
+          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/qibla?lat=41.8781&lng=-87.6298">Try (Chicago)</a>
+        </div>
+
+        <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-800/40 transition-colors">
+          <h4 class="font-semibold text-white flex items-center">
+            <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>Prayer Times
+          </h4>
+          <p class="text-sm text-gray-300">Accurate Fajr–Isha times with multiple calculation methods.</p>
+          <code class="block mt-3 text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700">
+            GET /api/prayer-times?lat={lat}&amp;lng={lng}&amp;date=YYYY-MM-DD&amp;method=MuslimWorldLeague
+          </code>
+          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/prayer-times?lat=40.7128&lng=-74.006&date=2025-09-19&method=MuslimWorldLeague">Try (NYC)</a>
+        </div>
+
+        <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-800/40 transition-colors">
+          <h4 class="font-semibold text-white flex items-center">
+            <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>Hijri Date
+          </h4>
+          <p class="text-sm text-gray-300">Gregorian → Hijri conversion and Islamic events.</p>
+          <code class="block mt-3 text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700">GET /api/hijri-date?date=YYYY-MM-DD</code>
+          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/hijri-date?date=2025-09-19">Try</a>
+        </div>
+
+        <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-800/40 transition-colors">
+          <h4 class="font-semibold text-white flex items-center">
+            <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>Asma ul Husna
+          </h4>
+          <p class="text-sm text-gray-300">99 Names of Allah with meanings.</p>
+          <code class="block mt-3 text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700">GET /api/asma-ul-husna</code>
+          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/asma-ul-husna">Try</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples" class="mb-12">
+      <h3 class="text-2xl font-bold mb-4 text-white">Quick Examples</h3>
+      <div class="space-y-4">
+        <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg">
+          <p class="font-mono text-sm text-gray-200">curl "https://ummahapi.com/api/qibla?lat=41.8781&amp;lng=-87.6298"</p>
+        </div>
+        <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg">
+          <p class="font-mono text-sm text-gray-200">
+            curl "https://ummahapi.com/api/prayer-times?lat=24.8607&amp;lng=67.0011&amp;date=2025-09-19&amp;method=Karachi"
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold mb-3 text-white">Limits & Fair Use</h3>
+      <ul class="list-disc pl-6 text-sm text-gray-300 space-y-1">
+        <li>General: 200 requests / 15 minutes</li>
+        <li>Calculations: 30 calculations / minute</li>
+        <li>Protection: 1000 requests / hour</li>
+      </ul>
+    </section>
+
+    <section class="mb-16">
+      <h3 class="text-2xl font-bold mb-3 text-white">SDKs & Source</h3>
+      <p class="text-sm text-gray-300">
+        Open source on GitHub: <a class="text-red-400 hover:text-red-300 hover:underline transition-colors" href="https://github.com/yourusername/islamic-api">yourusername/islamic-api</a>.
+        Contributions and PRs are welcome.
+      </p>
+    </section>
+  </main>
+
+  <footer class="border-t border-red-900/40 bg-gray-800/90 backdrop-blur-sm">
+    <div class="max-w-5xl mx-auto px-4 py-6 text-sm text-gray-400">
+      © <span id="y"></span> <span class="text-red-400">Ummah</span>API · <span class="text-red-300">Sadaqah&nbsp;Jariah</span>
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
