@@ -36,48 +36,45 @@ function calculatePrayerTimes(latitude, longitude, date = null, method = 'Muslim
         // Parse date or use current date
         const prayerDate = date ? moment(date).toDate() : new Date();
         
-        // Select geographic calculation method
-        const calculationMethods = {
-            'MuslimWorldLeague': CalculationMethod.MuslimWorldLeague(),
-            'Egyptian': CalculationMethod.Egyptian(),
-            'Karachi': CalculationMethod.Karachi(),
-            'UmmAlQura': CalculationMethod.UmmAlQura(),
-            'Dubai': CalculationMethod.Dubai(),
-            'MoonsightingCommittee': CalculationMethod.MoonsightingCommittee(),
-            'NorthAmerica': CalculationMethod.NorthAmerica(),
-            'ISNA': CalculationMethod.NorthAmerica(), // Islamic Society of North America (alias for NorthAmerica)
-            'Kuwait': CalculationMethod.Kuwait(),
-            'Qatar': CalculationMethod.Qatar(),
-            'Singapore': CalculationMethod.Singapore(),
+        // Factory functions for fresh CalculationParameters instances
+        const methodFactories = {
+            'MuslimWorldLeague': CalculationMethod.MuslimWorldLeague,
+            'Egyptian': CalculationMethod.Egyptian,
+            'Karachi': CalculationMethod.Karachi,
+            'UmmAlQura': CalculationMethod.UmmAlQura,
+            'Dubai': CalculationMethod.Dubai,
+            'MoonsightingCommittee': CalculationMethod.MoonsightingCommittee,
+            'NorthAmerica': CalculationMethod.NorthAmerica,
+            'ISNA': CalculationMethod.NorthAmerica, // Islamic Society of North America (alias)
+            'Kuwait': CalculationMethod.Kuwait,
+            'Qatar': CalculationMethod.Qatar,
+            'Singapore': CalculationMethod.Singapore,
             
             // Legacy madhab methods (for backward compatibility)
-            'Hanafi': CalculationMethod.MuslimWorldLeague(),
-            'Shafi': CalculationMethod.MuslimWorldLeague(),
-            'Maliki': CalculationMethod.MuslimWorldLeague(),
-            'Hanbali': CalculationMethod.MuslimWorldLeague()
+            'Hanafi': CalculationMethod.MuslimWorldLeague,
+            'Shafi': CalculationMethod.MuslimWorldLeague,
+            'Maliki': CalculationMethod.MuslimWorldLeague,
+            'Hanbali': CalculationMethod.MuslimWorldLeague
         };
         
-        let baseParams = calculationMethods[method] || calculationMethods.MuslimWorldLeague;
-        
-        // Set madhab for Asr calculation
-        // If method is a madhab name, use that madhab
-        // Otherwise, use the madhab parameter
-        let selectedMadhab = madhab;
-        if (['Hanafi', 'Shafi', 'Maliki', 'Hanbali'].includes(method)) {
-            selectedMadhab = method;
+        function freshParams(method) {
+            const factory = methodFactories[method] || CalculationMethod.MuslimWorldLeague;
+            return factory(); // NEW CalculationParameters each call
         }
+        
+        // Get fresh calculation parameters
+        const params = freshParams(method);
+        
+        // Madhab selection
+        const selectedMadhab = ['Hanafi', 'Shafi', 'Maliki', 'Hanbali'].includes(method)
+            ? method
+            : (madhab || 'Shafi');
         
         console.log(`[DEBUG] Method: ${method}, Selected Madhab: ${selectedMadhab}, Original madhab param: ${madhab}`);
         
-        // Apply madhab directly to the calculation parameters
-        let params = baseParams;
-        if (selectedMadhab === 'Hanafi') {
-            params.madhab = Madhab.Hanafi;
-            console.log('[DEBUG] Applied Hanafi madhab for late Asr');
-        } else {
-            params.madhab = Madhab.Shafi;
-            console.log('[DEBUG] Applied Shafi madhab for early Asr');
-        }
+        // Apply madhab to fresh parameters
+        params.madhab = (selectedMadhab === 'Hanafi') ? Madhab.Hanafi : Madhab.Shafi;
+        console.log(`[DEBUG] Applied ${selectedMadhab} madhab for ${selectedMadhab === 'Hanafi' ? 'late' : 'early'} Asr`);
         
         // Calculate prayer times
         const prayerTimes = new PrayerTimes(coordinates, prayerDate, params);
