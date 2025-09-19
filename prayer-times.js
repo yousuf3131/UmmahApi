@@ -8,6 +8,8 @@
 const { Coordinates, CalculationMethod, Prayer, PrayerTimes, Madhab } = require('adhan');
 const moment = require('moment');
 
+// Available Madhab values from adhan library
+
 /**
  * Convert English numerals to Arabic-Indic numerals
  * @param {string} str - String containing English numerals (0-9)
@@ -70,11 +72,9 @@ function calculatePrayerTimes(latitude, longitude, date = null, method = 'Muslim
             ? method
             : (madhab || 'Shafi');
         
-        console.log(`[DEBUG] Method: ${method}, Selected Madhab: ${selectedMadhab}, Original madhab param: ${madhab}`);
-        
         // Apply madhab to fresh parameters
-        params.madhab = (selectedMadhab === 'Hanafi') ? Madhab.Hanafi : Madhab.Shafi;
-        console.log(`[DEBUG] Applied ${selectedMadhab} madhab for ${selectedMadhab === 'Hanafi' ? 'late' : 'early'} Asr`);
+        const madhabValue = (selectedMadhab === 'Hanafi') ? Madhab.Hanafi : Madhab.Shafi;
+        params.madhab = madhabValue;
         
         // Calculate prayer times
         const prayerTimes = new PrayerTimes(coordinates, prayerDate, params);
@@ -99,7 +99,7 @@ function calculatePrayerTimes(latitude, longitude, date = null, method = 'Muslim
         const nextPrayerTime = prayerTimes.timeForPrayer(nextPrayer);
         const timeUntilNext = nextPrayerTime ? moment(nextPrayerTime).diff(moment(now)) : null;
         
-        return {
+        const response = {
             date: numerals === 'arabic' ? convertToArabicNumerals(moment(prayerDate).format('YYYY-MM-DD')) : moment(prayerDate).format('YYYY-MM-DD'),
             location: {
                 latitude: latitude,
@@ -141,6 +141,8 @@ function calculatePrayerTimes(latitude, longitude, date = null, method = 'Muslim
                 note: 'Times are calculated using astronomical methods. Local mosque times may vary slightly.'
             }
         };
+        
+        return response;
         
     } catch (error) {
         throw new Error(`Failed to calculate prayer times: ${error.message}`);
