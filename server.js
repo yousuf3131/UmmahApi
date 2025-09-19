@@ -820,9 +820,13 @@ app.use((error, req, res, next) => {
     });
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`\n🕋 Islamic Services API Server running on port ${PORT}`);
+// Export the app for Vercel's serverless runtime
+module.exports = app;
+
+// Only start a listener in local/dev (not on Vercel)
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`\n🕋 Islamic Services API Server running on http://localhost:${PORT}`);
     console.log(`📍 API Base URL: http://localhost:${PORT}/api`);
     console.log(`📚 Interactive Docs (Swagger): http://localhost:${PORT}/api/docs`);
     console.log(`🩺 Health Check: http://localhost:${PORT}/api/health`);
@@ -833,12 +837,6 @@ app.listen(PORT, () => {
     console.log(`   📅 Islamic Calendar: /api/hijri-date`);
     console.log(`   📿 99 Names of Allah: /api/asma-ul-husna`);
     console.log(`\n🤲 Sadaqah Jariah - May Allah accept this service for the ummah`);
-    console.log(`\nExample usage:`);
-    console.log(`curl "http://localhost:${PORT}/api/qibla?lat=40.7128&lng=-74.0060"`);
-    console.log(`curl "http://localhost:${PORT}/api/prayer-times?lat=40.7128&lng=-74.0060&method=ISNA"`);
-    console.log(`curl "http://localhost:${PORT}/api/prayer-times?lat=40.7128&lng=-74.0060&numerals=arabic"`);
-    console.log(`curl "http://localhost:${PORT}/api/asma-ul-husna/random"`);
     console.log(`\n───────────────────────────────────────────────────────────────`);
-});
-
-module.exports = app;
+  });
+}
