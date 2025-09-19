@@ -198,8 +198,12 @@ const swaggerOptions = {
 };
 
 // Swagger documentation routes
-app.use('/api/docs', swaggerUi.serve);
-app.get('/api/docs', swaggerUi.setup(swaggerSpec, swaggerOptions));
+app.use(
+  '/api/docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, swaggerOptions)
+);
+
 
 // Alternative documentation routes
 app.get('/docs', (req, res) => res.redirect('/api/docs'));
