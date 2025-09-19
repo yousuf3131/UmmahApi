@@ -8,17 +8,10 @@
 const { Coordinates, CalculationMethod, Prayer, PrayerTimes, Madhab } = require('adhan');
 const moment = require('moment');
 
-// Available Madhab values from adhan library
+// Set moment.js to use English locale and numerals
+moment.locale('en');
 
-/**
- * Convert English numerals to Arabic-Indic numerals
- * @param {string} str - String containing English numerals (0-9)
- * @returns {string} String with Arabic-Indic numerals (٠-٩)
- */
-function convertToArabicNumerals(str) {
-    const arabicNumerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-    return str.replace(/[0-9]/g, (digit) => arabicNumerals[parseInt(digit)]);
-}
+// Available Madhab values from adhan library
 
 /**
  * Calculate prayer times for a given location and date
@@ -26,11 +19,10 @@ function convertToArabicNumerals(str) {
  * @param {number} longitude - Longitude in degrees  
  * @param {string} date - Date in YYYY-MM-DD format (optional, defaults to today)
  * @param {string} method - Calculation method (optional, defaults to 'MuslimWorldLeague')
- * @param {string} numerals - Numeral system: 'english' or 'arabic' (optional, defaults to 'english')
  * @param {string} madhab - Islamic jurisprudence school: 'Hanafi' or 'Shafi' (optional, defaults to 'Shafi')
  * @returns {Object} Prayer times with additional information
  */
-function calculatePrayerTimes(latitude, longitude, date = null, method = 'MuslimWorldLeague', numerals = 'english', madhab = 'Shafi') {
+function calculatePrayerTimes(latitude, longitude, date = null, method = 'MuslimWorldLeague', madhab = 'Shafi') {
     try {
         // Set up coordinates
         const coordinates = new Coordinates(latitude, longitude);
@@ -79,15 +71,20 @@ function calculatePrayerTimes(latitude, longitude, date = null, method = 'Muslim
         // Calculate prayer times
         const prayerTimes = new PrayerTimes(coordinates, prayerDate, params);
         
-        // Format times based on numeral preference
+        // Format time functions using JavaScript Date to ensure English numerals
         const formatTime = (time) => {
-            const timeStr = moment(time).format('HH:mm');
-            return numerals === 'arabic' ? convertToArabicNumerals(timeStr) : timeStr;
+            const date = new Date(time);
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            return `${hours}:${minutes}`;
         };
         
         const formatTimeWithSeconds = (time) => {
-            const timeStr = moment(time).format('HH:mm:ss');
-            return numerals === 'arabic' ? convertToArabicNumerals(timeStr) : timeStr;
+            const date = new Date(time);
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            const seconds = date.getSeconds().toString().padStart(2, '0');
+            return `${hours}:${minutes}:${seconds}`;
         };
         
         // Get current prayer
@@ -100,14 +97,13 @@ function calculatePrayerTimes(latitude, longitude, date = null, method = 'Muslim
         const timeUntilNext = nextPrayerTime ? moment(nextPrayerTime).diff(moment(now)) : null;
         
         const response = {
-            date: numerals === 'arabic' ? convertToArabicNumerals(moment(prayerDate).format('YYYY-MM-DD')) : moment(prayerDate).format('YYYY-MM-DD'),
+            date: prayerDate.toISOString().split('T')[0], // YYYY-MM-DD format using native JS
             location: {
                 latitude: latitude,
                 longitude: longitude
             },
             calculation_method: method,
             madhab: selectedMadhab,
-            numeral_system: numerals,
             prayer_times: {
                 fajr: formatTime(prayerTimes.fajr),
                 sunrise: formatTime(prayerTimes.sunrise),
@@ -268,7 +264,7 @@ function getCalculationMethods() {
  * @param {string} madhab - Islamic jurisprudence school
  * @returns {Object} Validation result
  */
-function validatePrayerTimesRequest(lat, lng, date, method, numerals, madhab) {
+function validatePrayerTimesRequest(lat, lng, date, method, madhab) {
     // Validate coordinates (reuse from qibla.js)
     if (typeof lat !== 'number' || typeof lng !== 'number') {
         return {
@@ -312,14 +308,6 @@ function validatePrayerTimesRequest(lat, lng, date, method, numerals, madhab) {
         return {
             isValid: false,
             error: `Invalid calculation method. Available methods: ${availableMethods}`
-        };
-    }
-    
-    // Validate numerals if provided
-    if (numerals && !['english', 'arabic'].includes(numerals)) {
-        return {
-            isValid: false,
-            error: 'Invalid numeral system. Use "english" for 0-9 or "arabic" for ٠-٩'
         };
     }
     

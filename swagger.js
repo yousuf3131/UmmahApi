@@ -160,11 +160,11 @@ Please use responsibly, cache results when possible, and make dua for the develo
                   },
                 },
                 calculation_method: { type: 'string', example: 'MuslimWorldLeague' },
-                numeral_system: { type: 'string', example: 'english', description: 'Numeral system used: english (0-9) or arabic (٠-٩)' },
+                madhab: { type: 'string', example: 'Shafi', description: 'Islamic jurisprudence school used for Asr calculation' },
                 prayer_times: {
                   type: 'object',
                   properties: {
-                    fajr: { type: 'string', example: '05:30', description: 'Fajr prayer time (format depends on numeral_system)' },
+                    fajr: { type: 'string', example: '05:30', description: 'Fajr prayer time in HH:mm format' },
                     sunrise: { type: 'string', example: '06:45', description: 'Sunrise time' },
                     dhuhr: { type: 'string', example: '12:30', description: 'Dhuhr prayer time' },
                     asr: { type: 'string', example: '15:45', description: 'Asr prayer time' },
@@ -359,17 +359,6 @@ Please use responsibly, cache results when possible, and make dua for the develo
               },
               description: 'Calculation method (defaults to MuslimWorldLeague). Use Hanafi/Shafi/Maliki/Hanbali for madhab-specific Asr calculations.',
               example: 'MuslimWorldLeague',
-            },
-            {
-              name: 'numerals',
-              in: 'query',
-              required: false,
-              schema: {
-                type: 'string',
-                enum: ['english', 'arabic'],
-              },
-              description: 'Numeral system: "english" for 0-9 or "arabic" for ٠-٩ (defaults to english)',
-              example: 'english',
             },
             {
               name: 'madhab',

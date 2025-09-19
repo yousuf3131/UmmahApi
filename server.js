@@ -351,7 +351,7 @@ app.get('/api/qibla', (req, res) => {
 // 🕌 PRAYER TIMES ENDPOINT
 app.get('/api/prayer-times', (req, res) => {
     try {
-        const { lat, lng, latitude, longitude, date, method, numerals, madhab } = req.query;
+        const { lat, lng, latitude, longitude, date, method, madhab } = req.query;
         
         // Support both lat/lng and latitude/longitude parameter names
         const userLat = lat || latitude;
@@ -371,7 +371,6 @@ app.get('/api/prayer-times', (req, res) => {
                 optional_params: {
                     date: 'Date in YYYY-MM-DD format (defaults to today)',
                     method: 'Calculation method (defaults to MuslimWorldLeague)',
-                    numerals: 'Numeral system: "english" (0-9) or "arabic" (٠-٩) - defaults to english',
                     madhab: 'Islamic jurisprudence school: "Hanafi" or "Shafi" (defaults to Shafi)'
                 }
             });
@@ -382,7 +381,7 @@ app.get('/api/prayer-times', (req, res) => {
         const parsedLng = parseFloat(userLng);
         
         // Validate request
-        const validation = validatePrayerTimesRequest(parsedLat, parsedLng, date, method, numerals, madhab);
+        const validation = validatePrayerTimesRequest(parsedLat, parsedLng, date, method, madhab);
         if (!validation.isValid) {
             return res.status(400).json({
                 success: false,
@@ -393,7 +392,7 @@ app.get('/api/prayer-times', (req, res) => {
         }
         
         // Calculate prayer times
-        const prayerData = calculatePrayerTimes(parsedLat, parsedLng, date, method, numerals, madhab);
+        const prayerData = calculatePrayerTimes(parsedLat, parsedLng, date, method, madhab);
         
         res.json({
             success: true,
