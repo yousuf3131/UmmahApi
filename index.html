@@ -100,11 +100,11 @@
           <h4 class="font-semibold text-white flex items-center">
             <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>Prayer Times
           </h4>
-          <p class="text-sm text-gray-300">Accurate Fajr–Isha times with multiple calculation methods.</p>
+          <p class="text-sm text-gray-300">Accurate Fajr–Isha times with madhab support (Hanafi/Shafi/Maliki/Hanbali).</p>
           <code class="block mt-3 text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700">
-            GET /api/prayer-times?lat={lat}&amp;lng={lng}&amp;date=YYYY-MM-DD&amp;method=MuslimWorldLeague
+            GET /api/prayer-times?lat={lat}&amp;lng={lng}&amp;madhab=Hanafi&amp;method=MuslimWorldLeague
           </code>
-          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/prayer-times?lat=40.7128&lng=-74.006&date=2025-09-19&method=MuslimWorldLeague">Try (NYC)</a>
+          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors" href="/api/prayer-times?lat=40.7128&lng=-74.006&madhab=Hanafi&method=MuslimWorldLeague">Try (NYC - Hanafi)</a>
         </div>
 
         <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg hover:border-red-800/40 transition-colors">
@@ -135,7 +135,7 @@
         </div>
         <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-5 shadow-lg">
           <p class="font-mono text-sm text-gray-200">
-            curl "https://ummahapi.com/api/prayer-times?lat=24.8607&amp;lng=67.0011&amp;date=2025-09-19&amp;method=Karachi"
+            curl "https://ummahapi.com/api/prayer-times?lat=24.8607&amp;lng=67.0011&amp;madhab=Hanafi&amp;method=MuslimWorldLeague"
           </p>
         </div>
       </div>

@@ -260,7 +260,6 @@ function getCalculationMethods() {
  * @param {number} lng - Longitude
  * @param {string} date - Date string
  * @param {string} method - Calculation method
- * @param {string} numerals - Numeral system
  * @param {string} madhab - Islamic jurisprudence school
  * @returns {Object} Validation result
  */

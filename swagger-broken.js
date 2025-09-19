@@ -72,7 +72,7 @@ Please use responsibly, cache results when possible, and make dua for the develo
         description: 'Development server',
       },
       {
-        url: 'https://your-api-domain.com',
+        url: 'https://ummahapi.com',
         description: 'Production server',
       },
     ],

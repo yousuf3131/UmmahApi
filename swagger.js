@@ -68,7 +68,7 @@ Please use responsibly, cache results when possible, and make dua for the develo
         description: 'Development server',
       },
       {
-        url: 'https://your-api-domain.com',
+        url: 'https://ummahapi.com',
         description: 'Production server',
       },
     ],
@@ -322,8 +322,8 @@ Please use responsibly, cache results when possible, and make dua for the develo
       '/api/prayer-times': {
         get: {
           tags: ['Prayer Times'],
-          summary: 'Get prayer times',
-          description: 'Calculate accurate prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha) for any location with multiple calculation methods.',
+          summary: 'Get prayer times with madhab support',
+          description: 'Calculate accurate prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha) for any location with multiple calculation methods and Islamic jurisprudence (madhab) support for precise Asr timing.',
           parameters: [
             {
               name: 'lat',

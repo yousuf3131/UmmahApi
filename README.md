@@ -19,7 +19,7 @@ This API is created as a sadaqah jariah - a continuous charity that benefits the
 
 ### Base URL
 ```
-https://your-api-domain.com/api
+https://ummahapi.com/api
 ```
 
 ### Example Services
@@ -27,8 +27,8 @@ https://your-api-domain.com/api
 # Qibla Direction
 GET /qibla?lat=40.7128&lng=-74.0060
 
-# Prayer Times
-GET /prayer-times?lat=40.7128&lng=-74.0060&date=2025-09-19
+# Prayer Times (with madhab support)
+GET /prayer-times?lat=40.7128&lng=-74.0060&date=2025-09-19&madhab=Hanafi
 
 # Islamic Calendar
 GET /hijri-date?date=2025-09-19

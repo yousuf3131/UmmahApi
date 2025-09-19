@@ -1,13 +1,20 @@
-# Qibla Direction API Documentation 🕋
+# Islamic Services API Documentation 🕋
 
 ## Overview
 
-The Qibla Direction API is a free, public REST API that calculates the prayer direction (Qibla) towards the Kaaba in Mecca from any location on Earth. This service is provided as **sadaqah jariah** (continuous charity) for the benefit of the Muslim ummah worldwide.
+The Islamic Services API is a comprehensive, free public REST API that provides essential Islamic services including Qibla direction, prayer times with madhab support, Islamic calendar, and more. This service is provided as **sadaqah jariah** (continuous charity) for the benefit of the Muslim ummah worldwide.
+
+### Available Services
+
+- 🧭 **Qibla Direction** - Prayer direction towards the Kaaba
+- 🕌 **Prayer Times** - Accurate prayer times with Islamic jurisprudence (madhab) support
+- 📅 **Islamic Calendar** - Hijri date conversions
+- 📿 **99 Names of Allah** - Asma ul Husna with meanings
 
 ## Base URL
 
 ```
-https://your-domain.com/api
+https://ummahapi.com/api
 ```
 
 For local development:
