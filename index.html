@@ -35,15 +35,34 @@
 </head>
 <body class="text-gray-100">
   <header class="bg-gray-800/90 backdrop-blur-sm border-b border-red-900/40">
-    <div class="max-w-5xl mx-auto px-4 py-6 flex items-center justify-between">
-      <h1 class="text-xl font-extrabold tracking-tight text-white">
-        <span class="text-red-400">Ummah</span><span class="text-white">API</span>
-      </h1>
-      <nav class="space-x-4 text-sm">
-        <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors" href="#endpoints">Endpoints</a>
-        <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors" href="#examples">Examples</a>
-        <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors" href="/api/docs">Swagger</a>
-        <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors" href="https://github.com/yourusername/islamic-api">GitHub</a>
+    <div class="max-w-5xl mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <h1 class="text-xl font-extrabold tracking-tight text-white">
+          <span class="text-red-400">Ummah</span><span class="text-white">API</span>
+        </h1>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-4 text-sm">
+          <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors" href="#endpoints">Endpoints</a>
+          <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors" href="#examples">Examples</a>
+          <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors" href="/api/docs">Swagger</a>
+          <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors" href="https://github.com/yourusername/islamic-api">GitHub</a>
+        </nav>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-red-300 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <nav id="mobile-menu" class="hidden md:hidden mt-4 pb-2 space-y-2">
+        <a class="block py-2 text-gray-300 hover:text-red-300 transition-colors border-b border-gray-700" href="#endpoints">Endpoints</a>
+        <a class="block py-2 text-gray-300 hover:text-red-300 transition-colors border-b border-gray-700" href="#examples">Examples</a>
+        <a class="block py-2 text-gray-300 hover:text-red-300 transition-colors border-b border-gray-700" href="/api/docs">Swagger</a>
+        <a class="block py-2 text-gray-300 hover:text-red-300 transition-colors" href="https://github.com/yourusername/islamic-api">GitHub</a>
       </nav>
     </div>
   </header>
@@ -146,6 +165,32 @@
     </div>
   </footer>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+    // Set current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when clicking on a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  </script>
 </body>
 </html>
