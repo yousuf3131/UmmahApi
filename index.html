@@ -36,14 +36,14 @@
   
   <!-- Additional SEO -->
   <link rel="canonical" href="https://ummahapi.com/" />
-  <meta name="theme-color" content="#A92846" />
-  <meta name="msapplication-TileColor" content="#A92846" />
+  <meta name="theme-color" content="#166534" />
+  <meta name="msapplication-TileColor" content="#166534" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><circle cx='128' cy='128' r='120' fill='%23A92846'/><path d='M128 56l44 28v88h-88V84l44-28z' fill='%23fff'/></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><circle cx='128' cy='128' r='120' fill='%23A92846'/><path d='M128 56l44 28v88h-88V84l44-28z' fill='%23fff'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><circle cx='128' cy='128' r='120' fill='%23166534'/><path d='M128 56l44 28v88h-88V84l44-28z' fill='%23fff'/></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'><circle cx='128' cy='128' r='120' fill='%23166534'/><path d='M128 56l44 28v88h-88V84l44-28z' fill='%23fff'/></svg>">
   
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -118,7 +118,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      background: linear-gradient(135deg, #1f2937 0%, #374151 25%, #4b5563 50%, #6b7280 75%, #9ca3af 100%);
+      background: linear-gradient(135deg, #0c1220 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
       background-attachment: fixed;
       position: relative;
     }
@@ -130,12 +130,28 @@
       width: 100%;
       height: 100%;
       background-image: 
-        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 2px, transparent 2px),
-        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 1px, transparent 1px),
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.08) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, rgba(34, 197, 94, 0.06) 1px, transparent 1px),
         linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%);
+        linear-gradient(-45deg, rgba(16, 185, 129, 0.015) 25%, transparent 25%);
       background-size: 60px 60px, 40px 40px, 20px 20px, 20px 20px;
       background-position: 0 0, 20px 20px, 0 0, 10px 10px;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    /* Islamic Pattern Overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
+        conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(251, 191, 36, 0.015) 45deg, transparent 90deg, rgba(16, 185, 129, 0.02) 135deg, transparent 180deg, rgba(251, 191, 36, 0.015) 225deg, transparent 270deg, rgba(16, 185, 129, 0.02) 315deg, transparent 360deg);
+      background-size: 200px 200px, 100px 100px;
       pointer-events: none;
       z-index: -1;
     }
@@ -166,7 +182,7 @@
     }
     
     #mobile-menu-btn:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(34, 197, 94, 0.1);
     }
     
     /* Code block mobile improvements */
@@ -195,26 +211,41 @@
         -webkit-overflow-scrolling: touch;
       }
     }
+    
+    /* Islamic Theme Color Palette */
+    .text-islamic-primary { color: #10b981; }
+    .text-islamic-secondary { color: #059669; }
+    .text-islamic-accent { color: #d1fae5; }
+    .text-islamic-gold { color: #fbbf24; }
+    .text-islamic-teal { color: #14b8a6; }
+    .text-islamic-amber { color: #f59e0b; }
+    .bg-islamic-primary { background-color: #10b981; }
+    .bg-islamic-secondary { background-color: #059669; }
+    .bg-islamic-dark { background-color: #1e293b; }
+    .bg-islamic-slate { background-color: #334155; }
+    .border-islamic-primary { border-color: #10b981; }
+    .border-islamic-secondary { border-color: #059669; }
+    .border-islamic-gold { border-color: #fbbf24; }
   </style>
 </head>
-<body class="text-gray-100">
-  <header class="bg-gray-800/90 backdrop-blur-sm border-b border-red-900/40 sticky top-0 z-40">
+<body class="text-slate-100">
+  <header class="bg-slate-800/90 backdrop-blur-sm border-b border-slate-700/40 sticky top-0 z-40">
     <div class="max-w-5xl mx-auto px-4 py-4">
       <div class="flex items-center justify-between">
         <a href="/" class="text-lg sm:text-xl font-extrabold tracking-tight text-white hover:opacity-80 transition-opacity">
-          <span class="text-red-400">Ummah</span><span class="text-white">API</span>
+          <span class="text-islamic-primary">Ummah</span><span class="text-islamic-gold">API</span>
         </a>
         
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex space-x-4 text-sm">
-          <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors px-2 py-1 rounded" href="#endpoints">Endpoints</a>
-          <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors px-2 py-1 rounded" href="#examples">Examples</a>
-          <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors px-2 py-1 rounded" href="/api/docs">Swagger</a>
-          <a class="hover:underline text-gray-300 hover:text-red-300 transition-colors px-2 py-1 rounded" href="https://github.com/yourusername/islamic-api">GitHub</a>
+          <a class="hover:underline text-slate-300 hover:text-islamic-primary transition-colors px-2 py-1 rounded" href="#endpoints">Endpoints</a>
+          <a class="hover:underline text-slate-300 hover:text-islamic-primary transition-colors px-2 py-1 rounded" href="#examples">Examples</a>
+          <a class="hover:underline text-slate-300 hover:text-islamic-primary transition-colors px-2 py-1 rounded" href="/api/docs">Swagger</a>
+          <a class="hover:underline text-slate-300 hover:text-islamic-primary transition-colors px-2 py-1 rounded" href="https://github.com/yourusername/islamic-api">GitHub</a>
         </nav>
         
         <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-red-300 transition-colors p-2 rounded-md hover:bg-gray-700/50" aria-label="Toggle mobile menu" aria-expanded="false">
+        <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-islamic-primary transition-colors p-2 rounded-md hover:bg-slate-700/50" aria-label="Toggle mobile menu" aria-expanded="false">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -222,27 +253,27 @@
       </div>
       
       <!-- Mobile Navigation -->
-      <nav id="mobile-menu" class="hidden md:hidden mt-4 pb-2 space-y-1 bg-gray-800/95 rounded-lg border border-gray-700/50 backdrop-blur-sm">
-        <a class="block py-3 px-4 text-gray-300 hover:text-red-300 hover:bg-gray-700/50 transition-colors border-b border-gray-700/50" href="#endpoints">Endpoints</a>
-        <a class="block py-3 px-4 text-gray-300 hover:text-red-300 hover:bg-gray-700/50 transition-colors border-b border-gray-700/50" href="#examples">Examples</a>
-        <a class="block py-3 px-4 text-gray-300 hover:text-red-300 hover:bg-gray-700/50 transition-colors border-b border-gray-700/50" href="/api/docs">Swagger Docs</a>
-        <a class="block py-3 px-4 text-gray-300 hover:text-red-300 hover:bg-gray-700/50 transition-colors rounded-b-lg" href="https://github.com/yourusername/islamic-api">GitHub</a>
+      <nav id="mobile-menu" class="hidden md:hidden mt-4 pb-2 space-y-1 bg-slate-800/95 rounded-lg border border-slate-600/50 backdrop-blur-sm">
+        <a class="block py-3 px-4 text-slate-300 hover:text-islamic-primary hover:bg-slate-700/50 transition-colors border-b border-slate-600/50" href="#endpoints">Endpoints</a>
+        <a class="block py-3 px-4 text-slate-300 hover:text-islamic-primary hover:bg-slate-700/50 transition-colors border-b border-slate-600/50" href="#examples">Examples</a>
+        <a class="block py-3 px-4 text-slate-300 hover:text-islamic-primary hover:bg-slate-700/50 transition-colors border-b border-slate-600/50" href="/api/docs">Swagger Docs</a>
+        <a class="block py-3 px-4 text-slate-300 hover:text-islamic-primary hover:bg-slate-700/50 transition-colors rounded-b-lg" href="https://github.com/yourusername/islamic-api">GitHub</a>
       </nav>
     </div>
   </header>
 
   <main class="max-w-5xl mx-auto px-4 py-6 sm:py-10" role="main">
     <section class="mb-8 sm:mb-10" itemscope itemtype="https://schema.org/SoftwareApplication">
-      <div class="hero-section rounded-2xl bg-gradient-to-br from-gray-700 via-gray-800 to-red-900 text-white p-6 sm:p-8 shadow-2xl border border-red-900/30">
+      <div class="hero-section rounded-2xl bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 text-white p-6 sm:p-8 shadow-2xl border border-islamic-primary/30">
         <h1 class="hero-title text-3xl sm:text-4xl md:text-4xl font-black text-white leading-tight" itemprop="name">Free UmmahAPI</h1>
-        <p class="mt-3 sm:mt-4 max-w-2xl text-gray-200 text-base sm:text-lg leading-relaxed" itemprop="description">
+        <p class="mt-3 sm:mt-4 max-w-2xl text-slate-200 text-base sm:text-lg leading-relaxed" itemprop="description">
           Qibla direction, prayer times, Hijri calendar, Asma&nbsp;ul&nbsp;Husna and more — fast JSON endpoints with global coverage.
         </p>
         <div class="mt-6 flex flex-col sm:flex-row sm:flex-wrap gap-3">
-          <a href="/api/docs" class="px-6 py-3 rounded-lg bg-red-800 hover:bg-red-700 text-white font-semibold transition-colors shadow-lg text-center">Open Swagger Docs</a>
-          <a href="/api/health" class="px-6 py-3 rounded-lg border border-red-700/60 hover:border-red-600 font-semibold transition-colors text-center">Health Check</a>
+          <a href="/api/docs" class="px-6 py-3 rounded-lg bg-islamic-primary hover:bg-islamic-secondary text-white font-semibold transition-colors shadow-lg text-center">Open Swagger Docs</a>
+          <a href="/api/health" class="px-6 py-3 rounded-lg border border-islamic-gold/60 hover:border-islamic-gold font-semibold transition-colors text-center">Health Check</a>
         </div>
-        <p class="mt-6 text-sm sm:text-base text-red-200">
+        <p class="mt-6 text-sm sm:text-base text-islamic-gold">
           Sadaqah Jariah — May Allah accept this service for the ummah.
         </p>
       </div>
@@ -251,48 +282,48 @@
     <section id="endpoints" class="mb-12" itemscope itemtype="https://schema.org/ItemList">
       <h2 class="text-2xl font-bold mb-6 text-white" itemprop="name">API Endpoints</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-        <article class="api-card rounded-xl border border-red-800/40 bg-gray-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg hover:border-red-700/60 transition-colors" itemscope itemtype="https://schema.org/APIReference">
+        <article class="api-card rounded-xl border border-islamic-primary/40 bg-slate-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg hover:border-islamic-primary/60 transition-colors" itemscope itemtype="https://schema.org/APIReference">
           <h3 class="font-semibold text-white flex items-center mb-2" itemprop="name">
-            <span class="w-2 h-2 bg-red-500 rounded-full mr-2" aria-hidden="true"></span>Qibla Direction API
+            <span class="w-2 h-2 bg-islamic-primary rounded-full mr-2" aria-hidden="true"></span>Qibla Direction API
           </h3>
-          <p class="text-sm text-gray-300 mb-3" itemprop="description">Find accurate prayer direction to Makkah from any coordinates worldwide.</p>
+          <p class="text-sm text-slate-300 mb-3" itemprop="description">Find accurate prayer direction to Makkah from any coordinates worldwide.</p>
           <div class="mobile-scroll">
-            <code class="block text-xs sm:text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700 whitespace-pre-wrap break-all">GET /api/qibla?lat=<span class="opacity-70">{lat}</span>&amp;lng=<span class="opacity-70">{lng}</span></code>
+            <code class="block text-xs sm:text-sm bg-slate-950/50 text-slate-200 p-3 rounded border border-slate-600 whitespace-pre-wrap break-all">GET /api/qibla?lat=<span class="opacity-70">{lat}</span>&amp;lng=<span class="opacity-70">{lng}</span></code>
           </div>
-          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors font-medium" href="/api/qibla?lat=41.8781&lng=-87.6298" itemprop="url" aria-label="Try Qibla API with Chicago coordinates">Try (Chicago)</a>
+          <a class="text-islamic-primary hover:text-islamic-secondary text-sm mt-3 inline-block hover:underline transition-colors font-medium" href="/api/qibla?lat=41.8781&lng=-87.6298" itemprop="url" aria-label="Try Qibla API with Chicago coordinates">Try (Chicago)</a>
         </article>
 
-        <article class="api-card rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg hover:border-red-800/40 transition-colors" itemscope itemtype="https://schema.org/APIReference">
+        <article class="api-card rounded-xl border border-islamic-teal/40 bg-slate-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg hover:border-islamic-teal/60 transition-colors" itemscope itemtype="https://schema.org/APIReference">
           <h3 class="font-semibold text-white flex items-center mb-2" itemprop="name">
-            <span class="w-2 h-2 bg-red-500 rounded-full mr-2" aria-hidden="true"></span>Prayer Times API
+            <span class="w-2 h-2 bg-islamic-teal rounded-full mr-2" aria-hidden="true"></span>Prayer Times API
           </h3>
-          <p class="text-sm text-gray-300 mb-3" itemprop="description">Accurate Fajr–Isha prayer times with madhab support (Hanafi/Shafi/Maliki/Hanbali).</p>
+          <p class="text-sm text-slate-300 mb-3" itemprop="description">Accurate Fajr–Isha prayer times with madhab support (Hanafi/Shafi/Maliki/Hanbali).</p>
           <div class="mobile-scroll">
-            <code class="block text-xs sm:text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700 whitespace-pre-wrap break-all">GET /api/prayer-times?lat={lat}&amp;lng={lng}&amp;madhab=Hanafi&amp;method=MuslimWorldLeague</code>
+            <code class="block text-xs sm:text-sm bg-slate-950/50 text-slate-200 p-3 rounded border border-slate-600 whitespace-pre-wrap break-all">GET /api/prayer-times?lat={lat}&amp;lng={lng}&amp;madhab=Hanafi&amp;method=MuslimWorldLeague</code>
           </div>
-          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors font-medium" href="/api/prayer-times?lat=40.7128&lng=-74.006&madhab=Hanafi&method=MuslimWorldLeague" itemprop="url" aria-label="Try Prayer Times API with New York coordinates and Hanafi madhab">Try (NYC - Hanafi)</a>
+          <a class="text-islamic-teal hover:text-teal-400 text-sm mt-3 inline-block hover:underline transition-colors font-medium" href="/api/prayer-times?lat=40.7128&lng=-74.006&madhab=Hanafi&method=MuslimWorldLeague" itemprop="url" aria-label="Try Prayer Times API with New York coordinates and Hanafi madhab">Try (NYC - Hanafi)</a>
         </article>
 
-        <article class="api-card rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg hover:border-red-800/40 transition-colors" itemscope itemtype="https://schema.org/APIReference">
+        <article class="api-card rounded-xl border border-islamic-amber/40 bg-slate-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg hover:border-islamic-amber/60 transition-colors" itemscope itemtype="https://schema.org/APIReference">
           <h3 class="font-semibold text-white flex items-center mb-2" itemprop="name">
-            <span class="w-2 h-2 bg-red-500 rounded-full mr-2" aria-hidden="true"></span>Hijri Calendar API
+            <span class="w-2 h-2 bg-islamic-amber rounded-full mr-2" aria-hidden="true"></span>Hijri Calendar API
           </h3>
-          <p class="text-sm text-gray-300 mb-3" itemprop="description">Gregorian to Hijri date conversion and Islamic calendar events.</p>
+          <p class="text-sm text-slate-300 mb-3" itemprop="description">Gregorian to Hijri date conversion and Islamic calendar events.</p>
           <div class="mobile-scroll">
-            <code class="block text-xs sm:text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700 whitespace-pre-wrap break-all">GET /api/hijri-date?date=YYYY-MM-DD</code>
+            <code class="block text-xs sm:text-sm bg-slate-950/50 text-slate-200 p-3 rounded border border-slate-600 whitespace-pre-wrap break-all">GET /api/hijri-date?date=YYYY-MM-DD</code>
           </div>
-          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors font-medium" href="/api/hijri-date?date=2025-09-19" itemprop="url" aria-label="Try Hijri Calendar API with current date">Try Today's Date</a>
+          <a class="text-islamic-amber hover:text-amber-400 text-sm mt-3 inline-block hover:underline transition-colors font-medium" href="/api/hijri-date?date=2025-09-19" itemprop="url" aria-label="Try Hijri Calendar API with current date">Try Today's Date</a>
         </article>
 
-        <article class="api-card rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg hover:border-red-800/40 transition-colors" itemscope itemtype="https://schema.org/APIReference">
+        <article class="api-card rounded-xl border border-islamic-gold/40 bg-slate-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg hover:border-islamic-gold/60 transition-colors" itemscope itemtype="https://schema.org/APIReference">
           <h3 class="font-semibold text-white flex items-center mb-2" itemprop="name">
-            <span class="w-2 h-2 bg-red-500 rounded-full mr-2" aria-hidden="true"></span>99 Names of Allah API
+            <span class="w-2 h-2 bg-islamic-gold rounded-full mr-2" aria-hidden="true"></span>99 Names of Allah API
           </h3>
-          <p class="text-sm text-gray-300 mb-3" itemprop="description">Asma ul Husna - The 99 Beautiful Names of Allah with meanings and transliterations.</p>
+          <p class="text-sm text-slate-300 mb-3" itemprop="description">Asma ul Husna - The 99 Beautiful Names of Allah with meanings and transliterations.</p>
           <div class="mobile-scroll">
-            <code class="block text-xs sm:text-sm bg-gray-900/50 text-gray-200 p-3 rounded border border-gray-700 whitespace-pre-wrap break-all">GET /api/asma-ul-husna</code>
+            <code class="block text-xs sm:text-sm bg-slate-950/50 text-slate-200 p-3 rounded border border-slate-600 whitespace-pre-wrap break-all">GET /api/asma-ul-husna</code>
           </div>
-          <a class="text-red-400 hover:text-red-300 text-sm mt-3 inline-block hover:underline transition-colors font-medium" href="/api/asma-ul-husna" itemprop="url" aria-label="Try 99 Names of Allah API">Try API</a>
+          <a class="text-islamic-gold hover:text-yellow-400 text-sm mt-3 inline-block hover:underline transition-colors font-medium" href="/api/asma-ul-husna" itemprop="url" aria-label="Try 99 Names of Allah API">Try API</a>
         </article>
       </div>
     </section>
@@ -300,16 +331,16 @@
     <section id="examples" class="mb-12">
       <h2 class="text-2xl font-bold mb-6 text-white">Quick Examples</h2>
       <div class="space-y-4">
-        <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg">
-          <h3 class="text-sm font-medium text-red-300 mb-2">Get Qibla Direction</h3>
+        <div class="rounded-xl border border-slate-600/40 bg-slate-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg">
+          <h3 class="text-sm font-medium text-islamic-primary mb-2">Get Qibla Direction</h3>
           <div class="mobile-scroll">
-            <pre class="font-mono text-xs sm:text-sm text-gray-200 whitespace-pre-wrap break-all">curl "https://ummahapi.com/api/qibla?lat=41.8781&amp;lng=-87.6298"</pre>
+            <pre class="font-mono text-xs sm:text-sm text-slate-200 whitespace-pre-wrap break-all">curl "https://ummahapi.com/api/qibla?lat=41.8781&amp;lng=-87.6298"</pre>
           </div>
         </div>
-        <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg">
-          <h3 class="text-sm font-medium text-red-300 mb-2">Get Prayer Times</h3>
+        <div class="rounded-xl border border-slate-600/40 bg-slate-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg">
+          <h3 class="text-sm font-medium text-islamic-teal mb-2">Get Prayer Times</h3>
           <div class="mobile-scroll">
-            <pre class="font-mono text-xs sm:text-sm text-gray-200 whitespace-pre-wrap break-all">curl "https://ummahapi.com/api/prayer-times?lat=24.8607&amp;lng=67.0011&amp;madhab=Hanafi&amp;method=MuslimWorldLeague"</pre>
+            <pre class="font-mono text-xs sm:text-sm text-slate-200 whitespace-pre-wrap break-all">curl "https://ummahapi.com/api/prayer-times?lat=24.8607&amp;lng=67.0011&amp;madhab=Hanafi&amp;method=MuslimWorldLeague"</pre>
           </div>
         </div>
       </div>
@@ -317,33 +348,33 @@
 
     <section class="mb-12">
       <h2 class="text-2xl font-bold mb-4 text-white">Rate Limits & Fair Use</h2>
-      <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg">
-        <ul class="space-y-2 text-sm sm:text-base text-gray-300">
-          <li class="flex items-center"><span class="text-red-400 mr-2">•</span> General: 200 requests / 15 minutes</li>
-          <li class="flex items-center"><span class="text-red-400 mr-2">•</span> Calculations: 30 calculations / minute</li>
-          <li class="flex items-center"><span class="text-red-400 mr-2">•</span> Protection: 1000 requests / hour</li>
+      <div class="rounded-xl border border-slate-600/40 bg-slate-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg">
+        <ul class="space-y-2 text-sm sm:text-base text-slate-300">
+          <li class="flex items-center"><span class="text-islamic-primary mr-2">•</span> General: 200 requests / 15 minutes</li>
+          <li class="flex items-center"><span class="text-islamic-teal mr-2">•</span> Calculations: 30 calculations / minute</li>
+          <li class="flex items-center"><span class="text-islamic-amber mr-2">•</span> Protection: 1000 requests / hour</li>
         </ul>
       </div>
     </section>
 
     <section class="mb-16">
       <h2 class="text-2xl font-bold mb-4 text-white">Open Source & Community</h2>
-      <div class="rounded-xl border border-gray-600 bg-gray-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg">
-        <p class="text-sm sm:text-base text-gray-300 flex items-center flex-wrap">
+      <div class="rounded-xl border border-slate-600/40 bg-slate-800/70 backdrop-blur-sm p-4 sm:p-5 shadow-lg">
+        <p class="text-sm sm:text-base text-slate-300 flex items-center flex-wrap">
           <span class="mr-2">Open source on GitHub:</span>
-          <a class="text-red-400 hover:text-red-300 hover:underline transition-colors font-medium" href="https://github.com/yourusername/islamic-api">COMING SOON</a>
+          <a class="text-islamic-primary hover:text-islamic-secondary hover:underline transition-colors font-medium" href="https://github.com/yourusername/islamic-api">COMING SOON</a>
           <span class="ml-1">. Contributions and PRs are welcome!</span>
         </p>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-red-900/40 bg-gray-800/90 backdrop-blur-sm">
-    <div class="max-w-5xl mx-auto px-4 py-6 text-sm text-gray-400 text-center sm:text-left">
+  <footer class="border-t border-slate-700/40 bg-slate-900/90 backdrop-blur-sm">
+    <div class="max-w-5xl mx-auto px-4 py-6 text-sm text-slate-300 text-center sm:text-left">
       <p class="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-2">
-        <span>© <span id="y"></span> <span class="text-red-400">Ummah</span>API</span>
+        <span>© <span id="y"></span> <span class="text-islamic-primary">Ummah</span>API</span>
         <span class="hidden sm:inline">·</span>
-        <span class="text-red-300">Sadaqah&nbsp;Jariah</span>
+        <span class="text-islamic-gold">Sadaqah&nbsp;Jariah</span>
       </p>
     </div>
   </footer>
