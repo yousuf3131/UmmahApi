@@ -26,7 +26,7 @@
     "sadaqah",
     "jariah"
   ],
-  "author": "Your Name",
+  "author": "",
   "license": "MIT",
   "dependencies": {
     "@vercel/analytics": "^1.5.0",

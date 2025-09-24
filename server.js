@@ -127,7 +127,7 @@ const abuseDetection = (req, res, next) => {
     ];
     
     if (suspiciousPatterns.some(pattern => pattern)) {
-        console.log(`🚨 Suspicious activity detected - IP: ${ip}, User-Agent: ${userAgent}, Path: ${req.path}`);
+        // Log suspicious activity for monitoring purposes
     }
     
     // Check for rapid sequential requests (potential automation)
@@ -142,7 +142,7 @@ const abuseDetection = (req, res, next) => {
     
     // If more than 10 requests in 10 seconds from same IP, log it
     if (req.app.locals.requestTimes[ip].length > 10) {
-        console.log(`⚠️  Rapid requests detected - IP: ${ip} made ${req.app.locals.requestTimes[ip].length} requests in 10 seconds`);
+        // Log rapid requests for monitoring purposes
     }
     
     next();
@@ -162,14 +162,14 @@ app.use(express.json({ limit: '10mb' })); // Prevent huge payloads
 app.use((req, res, next) => {
     const timestamp = new Date().toISOString();
     const ip = req.ip || req.connection.remoteAddress || req.headers['x-forwarded-for'];
-    console.log(`[${timestamp}] ${req.method} ${req.path} - IP: ${ip}`);
+    // Log requests for monitoring purposes
     
     // Log suspicious patterns
     if (req.path.includes('/api/')) {
         const userAgent = req.headers['user-agent'] || 'Unknown';
         // Log if it looks like automated requests
         if (!userAgent.includes('Mozilla') && !userAgent.includes('curl')) {
-            console.log(`⚠️  Potential automated request - User-Agent: ${userAgent}`);
+            // Log potential automated request for monitoring purposes
         }
     }
     
