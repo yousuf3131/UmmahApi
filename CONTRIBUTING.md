@@ -1,4 +1,4 @@
-# Contributing to Islamic API 🕋
+# Contributing to Ummah API 🕋
 
 Thank you for your interest in contributing to this sadaqah jariah project! This API serves the global Muslim community, and your contributions help make Islamic services more accessible worldwide.
 
@@ -6,11 +6,11 @@ Thank you for your interest in contributing to this sadaqah jariah project! This
 
 ### 1. Fork the Repository
 - Click the "Fork" button on GitHub
-- Clone your fork: `git clone https://github.com/YOUR_USERNAME/IslamicApi.git`
+	- Clone your fork: `git clone https://github.com/YOUR_USERNAME/UmmahApi.git`
 
 ### 2. Set Up Development Environment
 ```bash
-cd IslamicApi
+cd UmmahApi
 npm install
 cp .env.example .env
 npm start

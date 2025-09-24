@@ -45,8 +45,8 @@ curl "https://your-domain.com/api/asma-ul-husna"
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yousuf3131/IslamicApi.git
-   cd IslamicApi
+   git clone https://github.com/yousuf3131/UmmahApi.git
+   cd UmmahApi
    ```
 
 2. **Install dependencies**
@@ -146,10 +146,10 @@ GET /api/asma-ul-husna/search?q={query}  # Search names
 ### Docker
 ```bash
 # Build image
-docker build -t islamic-api .
+docker build -t ummah-api .
 
 # Run container
-docker run -p 3000:3000 islamic-api
+docker run -p 3000:3000 ummah-api
 ```
 
 ### Traditional Hosting
@@ -195,8 +195,8 @@ MIT License - Free for everyone to use, modify, and distribute.
 
 ## 📞 Support & Community
 
-- 🐞 **Issues**: [GitHub Issues](https://github.com/yousuf3131/IslamicApi/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/yousuf3131/IslamicApi/discussions)  
+- 🐞 **Issues**: [GitHub Issues](https://github.com/yousuf3131/UmmahApi/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/yousuf3131/UmmahApi/discussions)  
 - 📖 **Documentation**: [API Docs](https://your-domain.com/api/docs)
 
 ---
